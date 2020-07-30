@@ -12,13 +12,9 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducer)
 
 function configureStore() {
-  const store = createStore(
-    persistedReducer,
-
-    devToolsEnhancer({})
-  )
+  const store = createStore(persistedReducer, devToolsEnhancer({}))
   const persistor = persistStore(store)
-  return { store, persistor }
+  return { persistor, store }
 }
 
 export default configureStore
